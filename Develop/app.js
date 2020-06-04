@@ -11,6 +11,10 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+
+//Need a team constant to allow for the team members to join
+const team = [];
+
 function managerFunction() {
     const managerQuestions = [
         {
@@ -25,7 +29,7 @@ function managerFunction() {
         }
         {
             type: 'input',
-            name: 'managerId',
+            name: 'managerEmail',
             message: 'What is your email address?',
         },
         {
@@ -34,6 +38,17 @@ function managerFunction() {
             message: 'What is your phone number?'
         }
     ];
+
+    inquirer.prompt(managerQuestions).then(function res() {
+        let name = res.managerName;
+        let id = res.managerId;
+        let email = res.managerEmail;
+        let officeNumber = res.managerOffice;
+
+        const manager = new Manager(name, id, email, officeNumber);
+
+        team.push(manager);
+    })
 }
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
