@@ -15,6 +15,7 @@ const render = require("./lib/htmlRenderer");
 //Need a team constant to allow for the team members to join
 const team = [];
 
+managerFunction();
 //First team member will be the manager, who makes the team
 function managerFunction() {
 
@@ -131,7 +132,7 @@ function internFunction() {
 }
 
 function nextEmployee() {
-
+//Questions for next employees
     const nextEmployeeQuestions = [
         {
             type: 'list',
@@ -140,12 +141,28 @@ function nextEmployee() {
             choices: ['Engineer', 'Intern', 'Team Complete']
         }
     ]
-
+//Next employee questions switch cases
     inquirer.prompt(nextEmployeeQuestions).then(function res() {
         switch (res.continue) {
-            case 'Engineer',
-            case 'Intern',
-            default
+            case 'Engineer':
+                engineerFunction();
+                break;
+
+            case 'Intern':
+                internFunction();
+                break;
+//Default will be to put in to the folder
+            default:
+                if (!fs.existsSync(OUTPUT_DIR)) {
+                    fs.mkdirSync(OUTPUT_DIR, function (err) {
+                        if (err) throw err;
+                    })
+                }
+
+        // Write file for the team cards
+        fs.writeFileSync(outputPath, render(team), 'utf-8');
         }
+
+        console.log('Your team has been generated!');
     })
 }
