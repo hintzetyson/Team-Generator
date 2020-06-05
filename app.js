@@ -62,21 +62,25 @@ function managerFunction() {
             type: 'input',
             name: 'managerName',
             message: 'What is your name?'
+            validate: fieldValidation
         },
         {
             type: 'input',
             name: 'managerId',
-            message: 'What is your ID number?'
+            message: 'What is your ID number?',
+            validate: numberValidation
         },
         {
             type: 'input',
             name: 'managerEmail',
             message: 'What is your email address?',
+            validate: emailValidation
         },
         {
             type: 'input',
             name: 'managerPhone',
             message: 'What is your phone number?'
+            validate: fieldValidation
         }
     ];
 
@@ -100,22 +104,26 @@ function engineerFunction() {
         {
             type: 'input',
             name: 'engineerName',
-            message: 'What is the name of the Engineer?'
+            message: 'What is the name of the Engineer?',
+            validate: fieldValidation
         },
         {
             type: 'input',
             name: 'engineerId',
-            message: 'What is the Id number of this Engineer?'
+            message: 'What is the Id number of this Engineer?',
+            validate: numberValidation
         },
         {
             type: 'input',
             name: 'engineerEmail',
-            message: 'What is the Engineer\'s email address?'
+            message: 'What is the Engineer\'s email address?',
+            validate: emailValidation
         },
         {
             type: 'input',
             name: 'engineerGithub',
-            message: 'What is the Engineer\'s Github username?'
+            message: 'What is the Engineer\'s Github username?',
+            validate: fieldValidation
         }
     ];
 
@@ -139,22 +147,26 @@ function internFunction() {
         {
             type: 'input',
             name: 'internName',
-            message: 'What is the name of the intern?'
+            message: 'What is the name of the intern?',
+            validate: fieldValidation
         },
         {
             type: 'input',
             name: 'internId',
-            message: 'What is the Id number of this intern?'
+            message: 'What is the Id number of this intern?',
+            validate: numberValidation
         },
         {
             type: 'input',
             name: 'internEmail',
-            message: 'What is the intern\'s email address?'
+            message: 'What is the intern\'s email address?',
+            validate: emailValidation
         },
         {
             type: 'input',
             name: 'internSchool',
-            message: 'What is the intern\'s school?'
+            message: 'What is the intern\'s school?',
+            validate: fieldValidation
         },
     ];
 
