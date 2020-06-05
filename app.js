@@ -24,7 +24,7 @@ function managerFunction() {
         {
             type: 'input',
             name: 'managerName',
-            message: 'What is the your name?'
+            message: 'What is your name?'
         },
         {
             type: 'input',
@@ -44,7 +44,7 @@ function managerFunction() {
     ];
 
     //Prompt for joining in the team members
-    inquirer.prompt(managerQuestions).then(function res() {
+    inquirer.prompt(managerQuestions).then(res => {
         let name = res.managerName;
         let id = res.managerId;
         let email = res.managerEmail;
@@ -53,6 +53,8 @@ function managerFunction() {
         const manager = new Manager(name, id, email, officeNumber);
 
         team.push(manager);
+
+        nextEmployee();
     })
 };
 
@@ -77,10 +79,10 @@ function engineerFunction() {
             type: 'input',
             name: 'engineerGithub',
             message: 'What is the Engineer\'s Github username?'
-        },
+        }
     ];
 
-    inquirer.prompt(engineerQuestions).then(function res() {
+    inquirer.prompt(engineerQuestions).then(res => {
         let name = res.engineerName;
         let id = res.engineerId;
         let email = res.engineerEmail;
@@ -89,8 +91,9 @@ function engineerFunction() {
         const engineer = new Engineer(name, id, email, github);
 
         team.push(engineer);
-    })
 
+        nextEmployee();
+    });
     
 };
 
@@ -118,7 +121,7 @@ function internFunction() {
         },
     ];
 
-    inquirer.prompt(internQuestions).then(function res() {
+    inquirer.prompt(internQuestions).then(res => {
         let name = res.internName;
         let id = res.internId;
         let email = res.internEmail;
@@ -127,8 +130,9 @@ function internFunction() {
         const intern = new Intern(name, id, email, school);
 
         team.push(intern);
-    });
 
+        nextEmployee();
+    });
 }
 
 function nextEmployee() {
@@ -140,9 +144,9 @@ function nextEmployee() {
             message: 'Would you like to add another member of your team?',
             choices: ['Engineer', 'Intern', 'Team Complete']
         }
-    ]
+    ];
 //Next employee questions switch cases
-    inquirer.prompt(nextEmployeeQuestions).then(function res() {
+    inquirer.prompt(nextEmployeeQuestions).then(res => {
         switch (res.continue) {
             case 'Engineer':
                 engineerFunction();
@@ -161,8 +165,8 @@ function nextEmployee() {
 
         // Write file for the team cards
         fs.writeFileSync(outputPath, render(team), 'utf-8');
-        }
-
+        
         console.log('Your team has been generated!');
+        }
     })
 }
