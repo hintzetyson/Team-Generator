@@ -74,7 +74,7 @@ function engineerFunction() {
         },
         {
             type: 'input'
-            name: 'githubUsername'
+            name: 'engineerGithub'
             message: 'What is the Engineer\'s Github username?'
         },
     ];
@@ -91,4 +91,41 @@ function engineerFunction() {
     })
 
     
+};
+
+function internFunction() {
+    const internQuestions = [
+        {
+            type: 'input'
+            name: 'internName'
+            message: 'What is the name of the intern?'
+        },
+        {
+            type: 'input'
+            name: 'internId'
+            message: 'What is the Id number of this intern?'
+        },
+        {
+            type: 'input'
+            name: 'internEmail'
+            message: 'What is the intern\'s email address?'
+        },
+        {
+            type: 'input'
+            name: 'internSchool'
+            message: 'What is the intern\'s school?'
+        },
+    ];
+
+    inquirer.prompt(internQuestions).then(function res() {
+        let name = res.internName;
+        let id = res.internId;
+        let email = res.internEmail;
+        let school = res.internSchool;
+
+        const intern = new Intern(name, id, email, school);
+
+        team.push(intern);
+    });
+
 }
