@@ -30,10 +30,7 @@ const numberValidation = async input => {
     } else if 
         (!input.match(/[0-9]/)) {
             return 'ID needs to be a number';
-    }  
-    else if (ids.indexOf(input) !== -1) {
-        return 'That ID is already taken, please choose a different one'
-    };
+    }
 
     return true;
 }
@@ -61,7 +58,7 @@ function managerFunction() {
         {
             type: 'input',
             name: 'managerName',
-            message: 'What is your name?'
+            message: 'What is your name?',
             validate: fieldValidation
         },
         {
@@ -79,7 +76,7 @@ function managerFunction() {
         {
             type: 'input',
             name: 'managerPhone',
-            message: 'What is your phone number?'
+            message: 'What is your phone number?',
             validate: fieldValidation
         }
     ];
