@@ -58,23 +58,23 @@ function managerFunction() {
 function engineerFunction() {
     const engineerQuestions = [
         {
-            type: 'input'
-            name: 'engineerName'
+            type: 'input',
+            name: 'engineerName',
             message: 'What is the name of the Engineer?'
         },
         {
-            type: 'input'
-            name: 'engineerId'
+            type: 'input',
+            name: 'engineerId',
             message: 'What is the Id number of this Engineer?'
         },
         {
-            type: 'input'
-            name: 'engineerEmail'
+            type: 'input',
+            name: 'engineerEmail',
             message: 'What is the Engineer\'s email address?'
         },
         {
-            type: 'input'
-            name: 'engineerGithub'
+            type: 'input',
+            name: 'engineerGithub',
             message: 'What is the Engineer\'s Github username?'
         },
     ];
@@ -96,23 +96,23 @@ function engineerFunction() {
 function internFunction() {
     const internQuestions = [
         {
-            type: 'input'
-            name: 'internName'
+            type: 'input',
+            name: 'internName',
             message: 'What is the name of the intern?'
         },
         {
-            type: 'input'
-            name: 'internId'
+            type: 'input',
+            name: 'internId',
             message: 'What is the Id number of this intern?'
         },
         {
-            type: 'input'
-            name: 'internEmail'
+            type: 'input',
+            name: 'internEmail',
             message: 'What is the intern\'s email address?'
         },
         {
-            type: 'input'
-            name: 'internSchool'
+            type: 'input',
+            name: 'internSchool',
             message: 'What is the intern\'s school?'
         },
     ];
@@ -128,4 +128,24 @@ function internFunction() {
         team.push(intern);
     });
 
+}
+
+function nextEmployee() {
+
+    const nextEmployeeQuestions = [
+        {
+            type: 'list',
+            name: 'continue',
+            message: 'Would you like to add another member of your team?',
+            choices: ['Engineer', 'Intern', 'Team Complete']
+        }
+    ]
+
+    inquirer.prompt(nextEmployeeQuestions).then(function res() {
+        switch (res.continue) {
+            case 'Engineer',
+            case 'Intern',
+            default
+        }
+    })
 }
