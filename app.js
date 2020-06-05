@@ -11,9 +11,46 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+const ids = [];
 
 //Need a team constant to allow for the team members to join
 const team = [];
+
+//Validation needed so there's no empty fields
+const fieldValidation = async input => {
+    if (input.trim() === ''){
+        return 'Field cannot be blank';
+    }
+    return true;
+}
+
+const numberValidation = async input => {
+    if (input.trim() === '') {
+        return 'Number field cannot be empty';
+    } else if 
+        (!input.match(/[0-9]/)) {
+            return 'ID needs to be a number';
+    }  
+    else if (ids.indexOf(input) !== -1) {
+        return 'That ID is already taken, please choose a different one'
+    };
+
+    return true;
+}
+
+const emailValidation = async input => {    
+    if (input.trim() === '') {
+        return 'Email cannot be empty.';
+    } 
+
+    // Got this from: http://regexlib.com/Search.aspx?k=email
+    else if (!input.trim().match(/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/)) {
+        return 'Must be a valid email address';
+    }
+
+
+    return true;
+}
 
 managerFunction();
 //First team member will be the manager, who makes the team
